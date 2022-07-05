@@ -15,6 +15,8 @@ export default {
   },
   data: function () {
     return {
+      a: 5,
+      b: 10,
     }
   },
   methods: {
@@ -35,7 +37,17 @@ export default {
      * POSTのテスト
      */
     postTest: async function () {
-
+      try {
+        const response = await axios.post("http://localhost:3000/post", {
+          a: this.a,
+          b: this.b
+        })
+        if (!response || response.status != 200) { throw response }
+        alert(this.a + " + " + this.b + " = " + response.data.result)
+      } catch (error) {
+        console.error(error)
+        alert("エラー")
+      }
     },
   },
 }
