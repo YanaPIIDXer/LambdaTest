@@ -17,7 +17,7 @@ exports.lambdaHandler = async (event, context) => {
         const responseHeaders = {
             "Access-Control-Allow-Methods": "OPTIONS,GET",
             "Access-Control-Allow-Headers" : "*",
-            "Access-Control-Allow-Origin": "https://ORIGIN_DOMAIN_NAME"
+            "Access-Control-Allow-Origin": "*"
         }
         response = {
             'statusCode': 200,
