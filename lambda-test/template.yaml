@@ -9,7 +9,7 @@ Description: >
 Globals:
   Api:
     Cors:
-      AllowMethods: "'OPTIONS,GET'"
+      AllowMethods: "'OPTIONS,GET,POST'"
       AllowHeaders: "'*'"
       AllowOrigin: "'ORIGIN_DOMAIN_NAME'"
   Function:
@@ -30,6 +30,11 @@ Resources:
           Properties:
             Path: /hello
             Method: get
+        PostTest:
+          Type: Api
+          Properties:
+            Path: /post
+            Method: post
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
