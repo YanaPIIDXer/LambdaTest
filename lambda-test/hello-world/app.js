@@ -1,5 +1,3 @@
-// const axios = require('axios')
-// const url = 'http://checkip.amazonaws.com/';
 let response;
 
 /**
@@ -16,12 +14,16 @@ let response;
  */
 exports.lambdaHandler = async (event, context) => {
     try {
-        // const ret = await axios(url);
+        const responseHeaders = {
+            "Access-Control-Allow-Methods": "OPTIONS,GET",
+            "Access-Control-Allow-Headers" : "*",
+            "Access-Control-Allow-Origin": "https://ORIGIN_DOMAIN_NAME"
+        }
         response = {
             'statusCode': 200,
+            'headers': responseHeaders,
             'body': JSON.stringify({
                 message: 'hello world',
-                // location: ret.data.trim()
             })
         }
     } catch (err) {
