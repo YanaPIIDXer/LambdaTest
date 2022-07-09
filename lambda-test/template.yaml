@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+  Function:
+    Runtime: nodejs14.x
+
+Resources:
+  TestApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+  TestFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: test.lambdaFunction
+      CodeUri: ./TestFunction/
+      FunctionName: Test
+      Events:
+        TestEvent:
+          Type: Api
+          Properties:
+            RestApiId: !Ref TestApi
+            Path: /
+            Method: get
+            
